@@ -12,18 +12,18 @@ number_of_samples=$(sed -n '$=' ${sample_names})
 
 source $config
 
-#echo "Using this input folder: $input_dir"
-#echo "Using this output folder: $out_dir"
-#echo "Using this config file: $config"
-#echo "Using this sample file: $sample_names"
-#echo "There are ${number_of_samples} samples."
+echo "Using this input folder: $input_dir"
+echo "Using this output folder: $out_dir"
+echo "Using this config file: $config"
+echo "Using this sample file: $sample_names"
+echo "Number of samples: ${number_of_samples}"
 
-#mkdir -p $out_dir/trim/logs
-#mkdir -p $out_dir/fastqc/logs/
-#mkdir -p $out_dir/fastqc/logs/
-#mkdir -p $out_dir/hisat/logs/
-#mkdir -p $out_dir/featurecounts/logs/
-#mkdir -p $out_dir/multiqc/
+mkdir -p $out_dir/trim/logs
+mkdir -p $out_dir/fastqc/logs/
+mkdir -p $out_dir/fastqc/logs/
+mkdir -p $out_dir/hisat/logs/
+mkdir -p $out_dir/featurecounts/logs/
+mkdir -p $out_dir/multiqc/
 
 # FASTQC
 jid1=$(sbatch --parsable -o $out_dir/fastqc/logs/%x-%j.out -e $out_dir/fastqc/logs/%x-%j.err /data/eve_maize/scripts/minh/fastqc_script.sh $input_dir $out_dir/fastqc/)
